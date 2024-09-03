@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace BootstrapUI\View\Helper;
 
+use Cake\View\Helper\HtmlHelper as CoreHtmlHelper;
 use Cake\View\View;
 
-class HtmlHelper extends \Cake\View\Helper\HtmlHelper
+class HtmlHelper extends CoreHtmlHelper
 {
     use OptionsAwareTrait;
 
@@ -102,7 +103,7 @@ class HtmlHelper extends \Cake\View\Helper\HtmlHelper
      * @deprecated Label component has been removed from Bootstrap. Use badge component instead.
      * @return string HTML badge markup.
      */
-    public function label(string $text, $options = []): string
+    public function label(string $text, array|string $options = []): string
     {
         if (is_string($options)) {
             $options = ['class' => $options];

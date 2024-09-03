@@ -132,7 +132,7 @@ trait InputgroupTrait
      * @param array|string $attachment prepend or append element. Can be a string or array, if contains options
      * @return array
      */
-    protected function _checkForOptions($attachment): array
+    protected function _checkForOptions(array|string $attachment): array
     {
         $ret = [];
 

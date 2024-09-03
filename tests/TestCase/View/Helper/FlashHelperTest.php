@@ -8,6 +8,7 @@ use Cake\Http\ServerRequest;
 use Cake\Http\Session;
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
+use UnexpectedValueException;
 
 /**
  * FlashHelperTest class
@@ -128,7 +129,7 @@ class FlashHelperTest extends TestCase
         $this->assertStringContainsString('<div role="alert" class="alert alert-dismissible fade show alert-primary">', $result);
         $this->assertStringContainsString('testClass</div>', $result);
 
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
         $this->Flash->render('invalidKey');
     }
 

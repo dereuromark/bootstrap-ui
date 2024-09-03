@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace BootstrapUI\Test\TestCase\View\Helper\FormHelper\DefaultAlign;
 
 use BootstrapUI\Test\TestCase\View\Helper\FormHelper\AbstractFormHelperTest;
+use DateTime;
 
 class DateTimeControlTest extends AbstractFormHelperTest
 {
@@ -11,7 +12,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -39,7 +40,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -67,7 +68,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -98,7 +99,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -137,7 +138,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -283,7 +284,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
         ];
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -317,7 +318,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
     {
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',
@@ -355,7 +356,7 @@ class DateTimeControlTest extends AbstractFormHelperTest
         ];
         $this->Form->create($this->article);
 
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         $result = $this->Form->control('created', [
             'type' => 'datetime-local',

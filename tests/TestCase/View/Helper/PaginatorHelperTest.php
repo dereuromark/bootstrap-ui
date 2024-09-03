@@ -5,6 +5,7 @@ namespace BootstrapUI\Test\TestCase\View\Helper;
 
 use BootstrapUI\View\Helper\PaginatorHelper;
 use Cake\Core\Configure;
+use Cake\Datasource\Paging\PaginatedResultSet;
 use Cake\Http\ServerRequest;
 use Cake\I18n\I18n;
 use Cake\Routing\Router;
@@ -16,15 +17,11 @@ use Cake\View\View;
  */
 class PaginatorHelperTest extends TestCase
 {
-    /**
-     * @var View
-     */
-    public $View;
+    protected View $View;
 
-    /**
-     * @var PaginatorHelper
-     */
-    public $Paginator;
+    protected PaginatorHelper $Paginator;
+
+    protected PaginatedResultSet $paginatedResult;
 
     /**
      * @var string

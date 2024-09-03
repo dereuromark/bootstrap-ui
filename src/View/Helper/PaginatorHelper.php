@@ -3,16 +3,41 @@ declare(strict_types=1);
 
 namespace BootstrapUI\View\Helper;
 
+use Cake\View\Helper\PaginatorHelper as CorePaginatorHelper;
 use Cake\View\View;
 
-class PaginatorHelper extends \Cake\View\Helper\PaginatorHelper
+class PaginatorHelper extends CorePaginatorHelper
 {
     /**
      * Allowed sizes.
      *
-     * @var string[]
+     * @var array<string>
      */
-    protected $_allowedSizes = ['sm', 'lg'];
+    protected array $_allowedSizes = ['sm', 'lg'];
+
+    /**
+     * Label defaults.
+     *
+     * @var array
+     */
+    protected array $_labels = [
+        'first' => [
+            'label' => 'First',
+            'text' => '«',
+        ],
+        'last' => [
+            'label' => 'Last',
+            'text' => '»',
+        ],
+        'prev' => [
+            'label' => 'Previous',
+            'text' => '‹',
+        ],
+        'next' => [
+            'label' => 'Next',
+            'text' => '›',
+        ],
+    ];
 
     /**
      * Constructor. Overridden to merge passed args with URL options.
@@ -70,7 +95,7 @@ class PaginatorHelper extends \Cake\View\Helper\PaginatorHelper
      * @return string|false Numbers string.
      * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-page-number-links
      */
-    public function links(array $options = [])
+    public function links(array $options = []): string|false
     {
         $class = 'pagination';
 

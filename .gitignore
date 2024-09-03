@@ -2,6 +2,7 @@ vendor/
 composer.lock
 node_modules
 .phpunit.result.cache
+.phpunit.cache
 
 # Ignore assets, except some css
 webroot/css/*
@@ -29,3 +30,4 @@ webroot/js/*
 nbproject/*
 # Visual Studio Code
 .vscode
+.DS_Store

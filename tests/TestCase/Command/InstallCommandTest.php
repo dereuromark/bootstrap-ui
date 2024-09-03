@@ -7,23 +7,16 @@ use BootstrapUI\Command\InstallCommand;
 use Cake\Command\Command;
 use Cake\Console\ConsoleIo;
 use Cake\Console\Exception\StopException;
+use Cake\Console\TestSuite\ConsoleIntegrationTestTrait;
+use Cake\Console\TestSuite\StubConsoleOutput;
 use Cake\Core\Plugin;
-use Cake\Filesystem\Filesystem;
-use Cake\TestSuite\ConsoleIntegrationTestTrait;
-use Cake\TestSuite\Stub\ConsoleOutput;
 use Cake\TestSuite\TestCase;
+use Cake\Utility\Filesystem;
 use SplFileInfo;
 
 class InstallCommandTest extends TestCase
 {
     use ConsoleIntegrationTestTrait;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->useCommandRunner();
-    }
 
     public function testInstall()
     {
@@ -34,7 +27,7 @@ class InstallCommandTest extends TestCase
         $filesystem = new Filesystem();
         $filesystem->deleteDir($appWebrootPath);
 
-        $this->assertDirectoryNotExists($appWebrootPath);
+        $this->assertDirectoryDoesNotExist($appWebrootPath);
 
         $this->exec('bootstrap install');
 
@@ -226,8 +219,8 @@ class InstallCommandTest extends TestCase
             ->method('_isNPMAvailable')
             ->willReturn(false);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -257,8 +250,8 @@ class InstallCommandTest extends TestCase
             ->method('_deleteNodeModules')
             ->willReturn(false);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -295,8 +288,8 @@ class InstallCommandTest extends TestCase
             ->method('_changeWorkingDirectory')
             ->willReturn(false);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -344,8 +337,8 @@ class InstallCommandTest extends TestCase
                 $return = 1234;
             }));
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -390,8 +383,8 @@ class InstallCommandTest extends TestCase
                 new SplFileInfo(TMP . 'script.js'),
             ]);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -441,8 +434,8 @@ class InstallCommandTest extends TestCase
                 new SplFileInfo(TMP . 'script.js'),
             ]);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -488,8 +481,8 @@ class InstallCommandTest extends TestCase
                 new SplFileInfo(TMP . 'non-existent.css'),
             ]);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -528,8 +521,8 @@ class InstallCommandTest extends TestCase
             ->method('executeCommand')
             ->willReturn(1234);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {
@@ -562,8 +555,8 @@ class InstallCommandTest extends TestCase
             ->method('executeCommand')
             ->willReturn(1234);
 
-        $out = new ConsoleOutput();
-        $err = new ConsoleOutput();
+        $out = new StubConsoleOutput();
+        $err = new StubConsoleOutput();
         $io = new ConsoleIo($out, $err);
 
         try {

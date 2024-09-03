@@ -6,11 +6,13 @@ namespace BootstrapUI\View\Helper;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
-use Cake\View\Helper\FormHelper as Helper;
+use Cake\View\Helper\FormHelper as CoreFormHelper;
 use Cake\View\View;
 use InvalidArgumentException;
+use function Cake\Core\h;
+use function Cake\I18n\__;
 
-class FormHelper extends Helper
+class FormHelper extends CoreFormHelper
 {
     use OptionsAwareTrait;
 
@@ -96,21 +98,28 @@ class FormHelper extends Helper
      *
      * @var string|null
      */
-    protected $_align;
+    protected ?string $_align = null;
 
     /**
      * Set on `Form::create()` to tell grid type.
      *
      * @var array|null
      */
-    protected $_grid;
+    protected ?array $_grid = null;
+
+    /**
+     * Set on `Form::create()` to tell the spacing type.
+     *
+     * @var string|false|null
+     */
+    protected string|false|null $_spacing = null;
 
     /**
      * Default Bootstrap string templates.
      *
      * @var array
      */
-    protected $_templates = [
+    protected array $_templates = [
         'error' => '<div class="invalid-feedback">{{content}}</div>',
         'errorTooltip' => '<div class="invalid-tooltip">{{content}}</div>',
         'label' => '<label{{attrs}}>{{text}}{{tooltip}}</label>',
@@ -208,7 +217,7 @@ class FormHelper extends Helper
      *
      * @var array
      */
-    protected $_templateSet = [
+    protected array $_templateSet = [
         'default' => [
         ],
         'inline' => [
@@ -321,7 +330,7 @@ class FormHelper extends Helper
      *
      * @var array<string, array<string>>
      */
-    protected $_widgets = [
+    protected array $_widgets = [
         'button' => ['BootstrapUI\View\Widget\ButtonWidget'],
         'datetime' => ['BootstrapUI\View\Widget\DateTimeWidget'],
         'file' => ['BootstrapUI\View\Widget\FileWidget', 'label'],
@@ -331,7 +340,7 @@ class FormHelper extends Helper
     ];
 
     /**
-     * Construct the widgets and binds the default context providers.
+     * {@inheritDoc}
      *
      * @param \Cake\View\View $View The View this helper is being attached to.
      * @param array<string, mixed> $config Configuration settings for the helper.
@@ -370,11 +379,10 @@ class FormHelper extends Helper
      * @param array<string, mixed> $options An array of html attributes and options.
      * @return string An formatted opening FORM tag.
      */
-    public function create($context = null, array $options = []): string
+    public function create(mixed $context = null, array $options = []): string
     {
         $options += [
             'class' => null,
-            'role' => 'form',
             'align' => null,
             'templates' => [],
         ];
@@ -1198,9 +1206,9 @@ class FormHelper extends Helper
      *
      * @param string $fieldName The field's name.
      * @param array<string, mixed> $options The options for the input element.
-     * @return string|array<string, mixed> The generated input element.
+     * @return array<string, mixed>|string The generated input element.
      */
-    protected function _getInput(string $fieldName, array $options)
+    protected function _getInput(string $fieldName, array $options): array|string
     {
         unset($options['help']);
 

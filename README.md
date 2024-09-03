@@ -15,13 +15,14 @@
 [package]: https://packagist.org/packages/friendsofcake/bootstrap-ui
 [license]: LICENSE.txt
 
-Transparently use [Bootstrap 4][bs4] with [CakePHP 4][cakephp].
+Transparently use [Bootstrap 4][bs] with [CakePHP 5][cakephp].
 
+This is a community fork. For official repo see FriendsOfCake.
 For version info see [version map](https://github.com/FriendsOfCake/bootstrap-ui/wiki#version-map).
 
 ## Requirements
 
-* CakePHP 4.x
+* CakePHP 5.x
 * Bootstrap 4.x
 * npm 5.x
 * jQuery 3.2+
@@ -672,13 +673,10 @@ composer install
 
 https://github.com/friendsofcake/bootstrap-ui/issues
 
-## License
-
-Copyright (c) 2015, Jad Bitar and licensed under [The MIT License][mit].
 
 [cakephp]:https://cakephp.org/
 [composer]:https://getcomposer.org/
 [composer:ignore]:https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md
 [mit]:https://opensource.org/licenses/mit-license.php
-[bs4]:https://getbootstrap.com/
+[bs]:https://getbootstrap.com/
 [npm]:https://www.npmjs.com/

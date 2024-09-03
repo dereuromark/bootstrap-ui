@@ -3,18 +3,16 @@ declare(strict_types=1);
 
 namespace BootstrapUI\Shell;
 
-use Cake\Console\Shell;
 use Cake\Core\Plugin;
-use Cake\TestSuite\ConsoleIntegrationTestCase;
 use Cake\TestSuite\StringCompareTrait;
 
 class BakeTest extends ConsoleIntegrationTestCase
 {
     use StringCompareTrait;
 
-    protected $generatedFile = '';
+    protected string $generatedFile = '';
 
-    protected $fixtures = [
+    protected array $fixtures = [
         'plugin.BootstrapUI.Articles',
         'plugin.BootstrapUI.Authors',
     ];
@@ -31,7 +29,6 @@ class BakeTest extends ConsoleIntegrationTestCase
                 'bootstrap' => true,
             ],
         ]);
-        $this->useCommandRunner();
     }
 
     public function tearDown(): void
